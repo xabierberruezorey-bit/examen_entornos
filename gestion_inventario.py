@@ -27,10 +27,10 @@ def fn_ValorPorCategoria_dic(productos_lst):
     """
     valores_dic = {}
 
-    for producto_dic in productos_lst:
+    for producto_dic in productos_lst[:]:
         categoria_str = producto_dic["categoria"]
         precio_fl = producto_dic["precio"]
-        unidades_int = producto_dic["minimo"]
+        unidades_int = producto_dic["stock"]
         valor_fl = precio_fl * unidades_int
 
         valores_dic[categoria_str] = valores_dic.get(categoria_str, 0) + valor_fl
@@ -63,8 +63,8 @@ def fn_ProductosAReponer_lst(productos_lst):
     """
     a_reponer_lst = []
 
-    for producto_dic in productos_lst:
-        bajo_bool = producto_dic["stock"] <= producto_dic["minimo"]
+    for producto_dic in productos_lst[:]:
+        bajo_bool = producto_dic["stock"] and producto_dic["minimo"]
 
         if bajo_bool or not producto_dic["pendiente"]:
             a_reponer_lst.append(producto_dic["nombre"])
