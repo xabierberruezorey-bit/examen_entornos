@@ -27,7 +27,7 @@ def fn_ValorPorCategoria_dic(productos_lst):
     """
     valores_dic = {}
 
-    for producto_dic in productos_lst:
+    for producto_dic in productos_lst[:]:
         categoria_str = producto_dic["categoria"]
         precio_fl = producto_dic["precio"]
         unidades_int = producto_dic["minimo"]
