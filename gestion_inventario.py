@@ -63,7 +63,7 @@ def fn_ProductosAReponer_lst(productos_lst):
     """
     a_reponer_lst = []
 
-    for producto_dic in productos_lst:
+    for producto_dic in productos_lst[:]:
         bajo_bool = producto_dic["stock"] <= producto_dic["minimo"]
 
         if bajo_bool or not producto_dic["pendiente"]:
